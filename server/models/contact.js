@@ -5,8 +5,9 @@ module.exports = function(sequelize, DataTypes) {
     id:   { 
         type: DataTypes.INTEGER, 
         primaryKey: true,
-        autoIncrement: true
-     },
+        autoIncrement: true,
+        allowNull: false
+    },
     first_name: {
          type: DataTypes.STRING,
          allowNull: false
@@ -20,6 +21,6 @@ module.exports = function(sequelize, DataTypes) {
   },
   {timestamps: false}
 );
-  
+
   return Contact;
 };

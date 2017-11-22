@@ -4,7 +4,7 @@ This is a RESTful API endpoint for contacts built on Node.js, Express, Sequelize
 
 ## API Specifications
 
-##### List all contacts
+### List all contacts
 
 Returns a list of contacts
 
@@ -14,7 +14,7 @@ GET /contacts/
 
 ```
 
-##### Create contact
+### Create contact
 
 create new contact
 
@@ -49,7 +49,7 @@ POST /contacts/
     </tr>
 </table>
 
-##### Retrieve contact
+### Retrieve contact
 
 Retrieve existing contact by ID
 
@@ -72,7 +72,7 @@ GET /contacts/:contactId
     </tr>
 </table>
 
-##### Update contact
+### Update contact
 
 Update existing contact
 
@@ -91,23 +91,23 @@ PUT /contacts/:contactId
     </tr>
     <tr>
         <td>first_name</td>
-        <td>yes</td>
+        <td>optional but one field is required</td>
     </tr>
     <tr>
         <td>last_name</td>
-        <td>yes</td>
+        <td>optional but one field is required</td>
     </tr>
     <tr>
         <td>phone</td>
-        <td>no</td>
+        <td>optional but one field is required</td>
     </tr>
     <tr>
         <td>email</td>
-        <td>no</td>
+        <td>optional but one field is requiredno</td>
     </tr>
 </table>
 
-##### Delete contact
+#### Delete contact
 
 Delete existing contact by ID
 

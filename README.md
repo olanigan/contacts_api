@@ -129,3 +129,11 @@ DELETE /contacts/:contactId
         <td>INTEGER</td>
     </tr>
 </table>
+
+
+## Running application
+
+After cloning,
+* install the node modules: `$ npm install`
+* Then, run your application:  `$ npm start`
+* To run tests, run: `$ npm test`

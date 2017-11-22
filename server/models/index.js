@@ -15,5 +15,6 @@ db.Contact = sequelize.import(path.join(__dirname , "/contact"));
 
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
+db.config = config;
 
 module.exports = db;

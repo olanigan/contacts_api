@@ -58,20 +58,20 @@ module.exports = {
 
     //Handles the modification of contact by ID
     update(req, res){
-        return Contact.findById(req.params.id)
+        return Contact.findById(req.params.contactId)
         .then((contact) => {
             if(!contact){
                //Return error message
                return res.status(200).send({
-                    message: 'Contact with ID ' + req.params.id + ' not found' 
+                    message: 'Contact with ID ' + req.params.contactId + ' not found' 
                 }); 
             }
             //Update returned entry
             return contact.update({
-                first_name: req.body.first_name,
-                last_name : req.body.last_name,
-                phone: req.body.phone,
-                email: req.body.email      
+                first_name: req.body.first_name || contact.first_name,
+                last_name : req.body.last_name || contact.last_name,
+                phone: req.body.phone || contact.phone,
+                email: req.body.email  || contact.email    
             })
             .then((contact) => res.status(200).send(contact))
             .catch((err) => res.status(400).send(err));
@@ -81,12 +81,12 @@ module.exports = {
 
     //Handles the removal of contact by ID
     delete(req, res){
-        return Contact.findById(req.params.id)
+        return Contact.findById(req.params.contactId)
         .then((contact) => {
             if(!contact){
                //Return error message
                return res.status(200).send({
-                    message: 'Contact with ID ' + req.params.id + ' not found' 
+                    message: 'Contact with ID ' + req.params.contactId + ' not found' 
                 }); 
             }
             //Remove returned entry

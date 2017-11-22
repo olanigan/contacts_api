@@ -2,9 +2,9 @@ const express = require('express'),
       logger = require('morgan');
       bodyParser = require('body-parser');
       app = express(),
-      controller = require('./server/controllers');
- 
-const { PORT=3000, NODE_ENV='development'} = process.env;
+      config = require('./server/models').config,
+      controller = require('./server/controllers'),
+      PORT = process.env.PORT || 3000 ;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

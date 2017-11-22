@@ -103,7 +103,7 @@ PUT /contacts/:contactId
     </tr>
     <tr>
         <td>email</td>
-        <td>optional but one field is requiredno</td>
+        <td>optional but one field is required</td>
     </tr>
 </table>
 

@@ -11,14 +11,16 @@ Contact.sync();
 module.exports = {
     //Handles the creation of new contact
     create(req, res){
-         console.log('REQUEST BODY', req.body);
+         
         return Contact.create({
             first_name: req.body.first_name,
             last_name : req.body.last_name,
             phone: req.body.phone,
             email: req.body.email 
         })
-        .then((contact) => res.status(200).send(contact))
+        .then((contact) => res.status(200).send({
+            message: 'Contact ' + contact.id + ' has been successfully created'
+        }))
         .catch((err) => res.status(400).send(err));
     },
 
@@ -35,7 +37,7 @@ module.exports = {
                     message: 'Contact with ID ' + id + ' not found' 
                 });
             }
-            return res.status(200).send(contact)
+            return res.status(200).send(contact);
         })
         .catch((err) => res.status(400).send(err));
     },
@@ -58,6 +60,12 @@ module.exports = {
 
     //Handles the modification of contact by ID
     update(req, res){
+        if(Object.keys(req.body).length === 0){
+            return res.status(200).send({
+                    message: 'Request body is empty' 
+                }); 
+        }
+
         return Contact.findById(req.params.contactId)
         .then((contact) => {
             if(!contact){
@@ -73,7 +81,9 @@ module.exports = {
                 phone: req.body.phone || contact.phone,
                 email: req.body.email  || contact.email    
             })
-            .then((contact) => res.status(200).send(contact))
+            .then((contact) => res.status(200).send({
+                message: 'Contact ' + contact.id + ' has been successfully updated'
+            }))
             .catch((err) => res.status(400).send(err));
         })
         .catch((err) => res.status(400).send(err));
@@ -91,7 +101,9 @@ module.exports = {
             }
             //Remove returned entry
             return contact.destroy()
-            .then((contact) => res.status(200).send(contact))
+            .then((contact) => res.status(200).send({
+                message: 'Contact ' + contact.id + ' has been successfully deleted'
+            }))
             .catch((err) => res.status(400).send(err));
         })
         .catch((err) => res.status(400).send(err));
